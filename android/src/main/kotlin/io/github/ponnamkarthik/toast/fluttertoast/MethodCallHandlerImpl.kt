@@ -26,7 +26,8 @@ internal class MethodCallHandlerImpl(var context: Context) : MethodCallHandler {
         when (call.method) {
             "showToast" -> {
                 val mMessage = call.argument<Any>("msg").toString()
-                val length = call.argument<Any>("length").toString()
+                //val length = call.argument<Any>("length").toString()
+                val duration = call.argument<Number>("duration")
                 val gravity = call.argument<Any>("gravity").toString()
                 val bgcolor = call.argument<Number>("bgcolor")
                 val textcolor = call.argument<Number>("textcolor")
@@ -40,10 +41,10 @@ internal class MethodCallHandlerImpl(var context: Context) : MethodCallHandler {
                 }
 
                 val mDuration: Int
-                mDuration = if (length == "long") {
-                    Toast.LENGTH_LONG
+                if (duration!=null) {
+                    mDuration = duration as Int
                 } else {
-                    Toast.LENGTH_SHORT
+                    mDuration = Toast.LENGTH_LONG
                 }
 
                 if (bgcolor != null && Build.VERSION.SDK_INT <= 30) {
@@ -67,7 +68,7 @@ internal class MethodCallHandlerImpl(var context: Context) : MethodCallHandler {
                         text.setTextColor(textcolor.toInt())
                     }
                     mToast = Toast(context)
-                    mToast.duration = mDuration
+                    mToast.setDuration(mDuration)
                     mToast.view = layout
                 } else {
                     mToast = Toast.makeText(context, mMessage, mDuration)

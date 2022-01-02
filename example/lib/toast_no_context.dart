@@ -10,7 +10,7 @@ class _ToastNoContextState extends State<ToastNoContext> {
   void showLongToast() {
     Fluttertoast.showToast(
       msg: "This is Long Toast",
-      toastLength: Toast.LENGTH_LONG,
+      duration: 5,
       fontSize: 18.0,
     );
   }
@@ -18,7 +18,7 @@ class _ToastNoContextState extends State<ToastNoContext> {
   void showWebColoredToast() {
     Fluttertoast.showToast(
       msg: "This is Colored Toast with android duration of 5 Sec",
-      toastLength: Toast.LENGTH_SHORT,
+      duration: 5,
       webBgColor: "#e74c3c",
       textColor: Colors.black,
       timeInSecForIosWeb: 5,
@@ -27,23 +27,24 @@ class _ToastNoContextState extends State<ToastNoContext> {
 
   void showColoredToast() {
     Fluttertoast.showToast(
-        msg: "This is Colored Toast with android duration of 5 Sec",
-        toastLength: Toast.LENGTH_SHORT,
+        msg: "This is Colored Toast with android duration of 15 Sec",
+        duration: 15,
         backgroundColor: Colors.red,
+        timeInSecForIosWeb: 15,
         textColor: Colors.white);
   }
 
   void showShortToast() {
     Fluttertoast.showToast(
         msg: "This is Short Toast",
-        toastLength: Toast.LENGTH_SHORT,
+        duration: 5,
         timeInSecForIosWeb: 1);
   }
 
   void showTopShortToast() {
     Fluttertoast.showToast(
         msg: "This is Top Short Toast",
-        toastLength: Toast.LENGTH_SHORT,
+        duration: 5,
         gravity: ToastGravity.TOP,
         timeInSecForIosWeb: 1);
   }
@@ -51,7 +52,7 @@ class _ToastNoContextState extends State<ToastNoContext> {
   void showCenterShortToast() {
     Fluttertoast.showToast(
         msg: "This is Center Short Toast",
-        toastLength: Toast.LENGTH_SHORT,
+        duration: 5,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1);
   }

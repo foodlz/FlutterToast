@@ -51,7 +51,8 @@ class Fluttertoast {
   /// Parameter [msg] is required and all remaining are optional
   static Future<bool?> showToast({
     required String msg,
-    Toast? toastLength,
+    int duration = 5,
+    //Toast? toastLength,
     int timeInSecForIosWeb = 1,
     double? fontSize,
     ToastGravity? gravity,
@@ -61,10 +62,10 @@ class Fluttertoast {
     webBgColor: "linear-gradient(to right, #00b09b, #96c93d)",
     webPosition: "right",
   }) async {
-    String toast = "short";
+    /*String toast = "short";
     if (toastLength == Toast.LENGTH_LONG) {
       toast = "long";
-    }
+    }*/
 
     String gravityToast = "bottom";
     if (gravity == ToastGravity.TOP) {
@@ -84,7 +85,8 @@ class Fluttertoast {
     }
     final Map<String, dynamic> params = <String, dynamic>{
       'msg': msg,
-      'length': toast,
+      //'length': toast,
+      'duration':duration,
       'time': timeInSecForIosWeb,
       'gravity': gravityToast,
       'bgcolor': backgroundColor != null ? backgroundColor.value : null,
@@ -210,7 +212,7 @@ class FToast {
     });
 
     _overlayQueue.add(_ToastEntry(
-        entry: newEntry, duration: toastDuration ?? Duration(seconds: 2)));
+        entry: newEntry, duration: toastDuration ?? Duration(seconds: 5)));
     if (_timer == null) _showOverlay();
   }
 
